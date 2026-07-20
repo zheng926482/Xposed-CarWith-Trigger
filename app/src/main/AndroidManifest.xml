@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yourname.xposedcarwith">
+    package="com.zheng926482.xposedcarwithtrigger">
 
     <application
         android:allowBackup="true"

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.yourname.xposedcarwith'
+    namespace 'com.zheng926482.xposedcarwithtrigger'
     compileSdk 34
 
     defaultConfig {
-        applicationId 'com.yourname.xposedcarwith'
+        applicationId 'com.zheng926482.xposedcarwithtrigger'
         minSdk 21
         targetSdk 34
         versionCode 1
