@@ -3,30 +3,30 @@ plugins {
 }
 
 android {
-    namespace 'com.zheng926482.xposedcarwithtrigger'
-    compileSdk 34
+    compileSdk 34  // 或 33，与您的一致即可
 
     defaultConfig {
-        applicationId 'com.zheng926482.xposedcarwithtrigger'
+        applicationId "com.zheng926482.xposedcarwithtrigger"
         minSdk 21
         targetSdk 34
         versionCode 1
-        versionName '1.0'
+        versionName "1.0"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
+    // 只保留 compileOnly 方式的 Xposed API
     compileOnly 'de.robv.android.xposed:api:82'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    compileOnly 'de.robv.android.xposed:api:82:sources'
 }
