@@ -1,0 +1,2 @@
+-keep class com.yourname.xposedcarwith.MainHook { *; }
+-keep class de.robv.android.xposed.** { *; }
