@@ -3,7 +3,8 @@ plugins {
 }
 
 android {
-    compileSdk 34  // 或 33，与您的一致即可
+    namespace 'com.zheng926482.xposedcarwithtrigger'   // 关键：与 AndroidManifest 的 package 保持一致
+    compileSdk 34   // 或 33，根据你的 SDK 安装情况
 
     defaultConfig {
         applicationId "com.zheng926482.xposedcarwithtrigger"
@@ -26,7 +27,6 @@ android {
 }
 
 dependencies {
-    // 只保留 compileOnly 方式的 Xposed API
     compileOnly 'de.robv.android.xposed:api:82'
     compileOnly 'de.robv.android.xposed:api:82:sources'
 }
