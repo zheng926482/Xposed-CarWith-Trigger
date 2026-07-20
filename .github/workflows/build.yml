@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -20,6 +22,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -32,3 +42,12 @@ jobs:
         with:
           name: xposed-module-apk
           path: app/build/outputs/apk/release/*.apk
+
+      - name: Upload APK to GitHub Release
+        if: github.event_name != 'pull_request'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-${{ github.run_number }}
+          name: APK Build ${{ github.run_number }}
+          draft: false
+          files: app/build/outputs/apk/release/*.apk
