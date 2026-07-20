@@ -2,35 +2,29 @@
     package="com.zheng926482.xposedcarwithtrigger">
 
     <application
-        android:allowBackup="true"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+    android:allowBackup="true"
+    android:label="@string/app_name"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <!-- 关键：Xposed 模块元数据 -->
+    <meta-data
+        android:name="xposedmodule"
+        android:value="true" />
+    <meta-data
+        android:name="xposeddescription"
+        android:value="Auto start SaltPlayer when CarWith connected" />
+    <meta-data
+        android:name="xposedminversion"
+        android:value="82" />
+    
+    <!-- 静态作用域，让 LSPosed 自动勾选 CarWith -->
+    <meta-data
+        android:name="xposedscope"
+        android:value="com.miui.carlink" />
 
-        <meta-data
-            android:name="xposedmodule"
-            android:value="true" />
-        <meta-data
-            android:name="xposeddescription"
-            android:value="Auto start SaltPlayer when CarWith connected" />
-        <meta-data
-            android:name="xposedminversion"
-            android:value="82" />
-        <meta-data
-            android:name="xposedscope"
-            android:value="com.miui.carlink" />
-        <meta-data
-            android:name="xposedsharedprefs"
-            android:value="true" />
-
-    </application>
-
+    <!-- 如果有启动 Activity，可保留但设置 exported="false" -->
+    <activity
+        android:name=".MainActivity"
+        android:exported="false" />
+</application>
 </manifest>
