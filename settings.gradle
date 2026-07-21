@@ -5,20 +5,16 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        id 'com.android.application' version '8.2.2'
+        id 'com.android.application' version '7.4.2'
     }
 }
-
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://api.xposed.info/'
-        }
+        maven { url 'https://api.xposed.info/' }
     }
 }
-
-rootProject.name = 'XposedCarWithTrigger'
+rootProject.name = "CarWithMiEnhance"
 include ':app'
